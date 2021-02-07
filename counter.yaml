@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: counter1
+spec:
+  containers:
+    - name: counter1
+      image: busybox
+      args: [/bin/sh, -c, "exit 1"]
+      resources:
+        requests:
+          cpu: "9"
+          memory: "25Mi"
+        limits:
+          cpu: "10"
+          memory: "50Mi"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: counter2
+spec:
+  containers:
+    - name: counter2
+      image: busybox
+      args: [/bin/sh, -c, "saindo...; exit 1"]
+      resources:
+        requests:
+          cpu: "10m"
+          memory: "25Mi"
+        limits:
+          cpu: "25m"
+          memory: "50Mi"
